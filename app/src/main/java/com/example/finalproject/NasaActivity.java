@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.finalproject.databinding.ActivityNasaBinding;
@@ -31,7 +33,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
@@ -63,8 +67,10 @@ public class NasaActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
 
-        //String searchBar = prefs.getString("")
-        //binding.nasaSearchBar.setText()
+        prefs = getSharedPreferences("NasaData", Context.MODE_PRIVATE);
+
+        String searchBar = prefs.getString("searchBar", "");
+        binding.nasaSearchBar.setText(searchBar);
 
         binding = ActivityNasaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -85,38 +91,53 @@ public class NasaActivity extends AppCompatActivity {
 
         binding.nasaSearchButton.setOnClickListener(click -> {
             String search = binding.nasaSearchBar.getText().toString();
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("searchBar", search);
+            editor.apply();
             int s = Integer.parseInt(search);
             if(s >=0 && s<=1000){
                 String stringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol="+s+"&api_key=ZTccaVancF9fVehaEVHOQPuoAvuWyzcAKJggN4DW";
-                JsonObjectRequest request = JsonObjectRequest(Request.Method.GET, stringURL, null, (response) -> {
-                    try{
-                        JSONArray jsonPhotos = response.getJSONArray(0);
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, stringURL, null,
+                        new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response){
+                        try{
+                            JSONObject jsonPhotos = response.getJSONObject("photos");
+                            JSONArray jsonPhotoArray = new JSONArray();
+                            jsonPhotoArray.put(jsonPhotos);
 
-                        int length = jsonPhotos.length();
-                        JSONObject tempItem;
-                        NasaPhotoInfo tempPhoto;
-                        for(int i=0; i<=length; i++){
+                            int length = jsonPhotos.length();
+                            JSONObject tempItem;
+                            NasaPhotoInfo tempPhoto;
+                            for(int i=0; i<=length; i++){
+                                tempItem = jsonPhotoArray.getJSONObject(i);
+                                JSONObject cameraArray = tempItem.getJSONObject("camera");
+                                String imageURL = tempItem.getString("img_scr");
+                                JSONObject roverArray = tempItem.getJSONObject("rover");
 
-                            tempItem = jsonPhotos.getJSONObject(i);
-                            JSONObject cameraArray = tempItem.getJSONObject("camera");
-                            String imageURL = tempItem.getString("img_scr");
-                            JSONObject roverArray = tempItem.getJSONObject("rover");
+                                String cameraName = cameraArray.getString("full_name");
+                                String roverName = roverArray.getString("name");
+                                Bitmap tempImg = null;
 
-                            String cameraName = cameraArray.getString("full_name");
-                            String roverName = roverArray.getString("name");
+                                try {
+                                    tempImg = BitmapFactory.decodeStream((InputStream) new URL(imageURL).getContent());
+                                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                    tempImg.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+                                    byte[] tempByteArray = outputStream.toByteArray();
+                                }catch(MalformedURLException malURLE){
+                                    malURLE.printStackTrace();
+                                }catch(IOException ioE){
+                                    ioE.printStackTrace();
+                                }
+                                tempPhoto = new NasaPhotoInfo(tempImg, roverName, cameraName, imageURL);
+                                nasaPhotos.add(tempPhoto);
+                                nasaAdapter.notifyItemInserted(nasaPhotos.size()-1);
 
-                            Bitmap tempImg = BitmapFactory.decodeStream((InputStream)new URL(imageURL).getContent());
-                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                            tempImg.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-                            byte [] tempByteArray = outputStream.toByteArray();
-
-                            tempPhoto = new NasaPhotoInfo(tempImg, roverName, cameraName, imageURL);
-                            nasaPhotos.add(tempPhoto);
-                            nasaAdapter.notifyItemInserted(nasaPhotos.size()-1);
-                        }
-
-                    } catch(JSONException jE){ jE.printStackTrace(); }
-                }, (error) -> {  });
+                            }
+                        } catch(JSONException jE){ jE.printStackTrace(); }
+                    }
+                    }
+                    , (error) -> {  });
                 queue.add(request);
 
             }
@@ -184,7 +205,10 @@ public class NasaActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
+        String search = binding.nasaSearchBar.getText().toString();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("searchBar", search);
+        editor.apply();
     }
 }
 
