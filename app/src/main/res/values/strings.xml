@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FinalProject</string>
+    <string name="nasa_button">Nasa Mars Rover photos</string>
+    <string name="nasa_search_bar">Enter number between 0-1000</string>
 </resources>
