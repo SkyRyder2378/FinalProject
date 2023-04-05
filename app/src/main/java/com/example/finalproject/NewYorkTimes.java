@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,16 +42,30 @@ import java.util.concurrent.Executors;
 import com.example.finalproject.databinding.ActivityNewyorktimesBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * This is class for Activity of New York Times
+ * @author Taeung Park
+ * @version 1.0
+ */
 public class NewYorkTimes extends AppCompatActivity {
+    /** Binding object for Activity of NewYorkTime */
     ActivityNewyorktimesBinding binding;
+    /** ArrayList for NewsData */
     ArrayList<NewsData> news = new ArrayList<>();
+    /** Declaration of RecyclerView Adapter */
     RecyclerView.Adapter myAdapter;
+    /** Declaration of NewYorkTimesViewModel */
     NewYorkTimesViewModel newsModel;
-    private RecyclerView mRecyclerView;
+    /** Declaration of RequestQueue */
     private RequestQueue queue;
-
+    /** Declaration of NewsDataDAO */
     NewsDataDAO nDAO;
 
+    /**
+     * This class to create menu for toolbar
+     * @param menu the options menu
+     * @return true after menu is created
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -61,8 +74,11 @@ public class NewYorkTimes extends AppCompatActivity {
         return true;
     }
 
-
-    // A method as handler for menu item on menu bar
+    /**
+     * A method as handler for menu item on toolbar
+     * @param item the selected menu item
+     * @return true after item is handled
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -74,7 +90,6 @@ public class NewYorkTimes extends AppCompatActivity {
                 if (newsModel.selectedArticle.getValue() == null) {
                     break;
                 } else {
-
                     AlertDialog.Builder builder = new AlertDialog.Builder(NewYorkTimes.this);
                     builder.setMessage("Do you want to add this event to the favourite list: ")
                             .setTitle("Question:")
@@ -88,7 +103,6 @@ public class NewYorkTimes extends AppCompatActivity {
                                 thread.execute(() -> {
                                     Article.id = (int) nDAO.insertList(Article);
                                 });
-
                             }).create().show();
                 }
                 break;
@@ -132,9 +146,6 @@ public class NewYorkTimes extends AppCompatActivity {
 
             case R.id.item_3:
                 news.clear(); // clear list
-                myAdapter.notifyDataSetChanged();
-
-                binding.caption.setVisibility(View.VISIBLE);
 
                 Executor thread = Executors.newSingleThreadExecutor();
                 thread.execute(() ->
@@ -149,7 +160,6 @@ public class NewYorkTimes extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(NewYorkTimes.this);
                 builder.setMessage("Helpful Information: It is an app designed to search for article in NewYorkTimes. " +
                                 "Find the article after clicking on the SEARCH button with your interest. " +
-                                "Click on the event name to view the details. " +
                                 "You can add or delete the article on the toolbar. ")
                         .create().show();
                 break;
@@ -157,6 +167,10 @@ public class NewYorkTimes extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * OnCreate method to all saved instance
+     * @param savedInstanceState saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,10 +183,6 @@ public class NewYorkTimes extends AppCompatActivity {
         Button button = findViewById(R.id.searchButton);
         EditText editText = findViewById(R.id.article);
 
-        mRecyclerView = findViewById(R.id.recycleView);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         news = new ArrayList<>();
 
         queue = Volley.newRequestQueue(this);
@@ -184,9 +194,8 @@ public class NewYorkTimes extends AppCompatActivity {
 
         if(news == null)
         {
-            newsModel.titles.postValue( news = new ArrayList<NewsData>());
+            newsModel.titles.postValue( news = new ArrayList<>());
         }
-
 
         // Observer to create and load a fragment
         newsModel.selectedArticle.observe(this, (newValue) -> {
@@ -196,6 +205,7 @@ public class NewYorkTimes extends AppCompatActivity {
             tx.replace(R.id.fragmentLocation, newsFragment);
             tx.commit();
             tx.addToBackStack("");
+
         });
 
         setSupportActionBar(binding.myToolbar);
@@ -210,12 +220,10 @@ public class NewYorkTimes extends AppCompatActivity {
         // OnClickListener to perform action after clicking on button
         button.setOnClickListener(click ->{
             news.clear();
-            myAdapter.notifyDataSetChanged();
 
             String value = editText.getText().toString();
             editor.putString("SearchData", value);
             editor.apply();
-
 
             parseJSON(); //invoke the method
 
@@ -226,20 +234,29 @@ public class NewYorkTimes extends AppCompatActivity {
             Context context = getApplicationContext();
             CharSequence text = "The search result of "+ name +" is displayed." ;
             int duration = Toast.LENGTH_LONG;
-
             Toast.makeText(context, text, duration).show();
         });
 
         binding.recycleView.setAdapter(myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
+            /**
+             * This class for view holder that shows title
+             * @param parent   the parent ViewGroup
+             * @param viewType the view type of the new View
+             * @return a new MyRowHolder object
+             */
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
                 View root;
                 root = getLayoutInflater().inflate(R.layout.title_list, parent, false);
                 return new MyRowHolder(root);
             }
 
+            /**
+             * Binding data at the specified position
+             * @param holder   The ViewHolder to bind the item at the given position in data set
+             * @param position The position of the item in data set
+             */
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 NewsData currentItem = news.get(position);
@@ -247,6 +264,10 @@ public class NewYorkTimes extends AppCompatActivity {
                 holder.title.setText(obj);
             }
 
+            /**
+             * Returns the total number of items in the data set
+             * @return total number of items
+             */
             @Override
             public int getItemCount() {
                 return news.size();
@@ -254,12 +275,14 @@ public class NewYorkTimes extends AppCompatActivity {
         });
     }
 
-    // A method to interact with external API by JSON for data
+    /**
+     * A method to interact with external API by JSON for data
+     */
     private void parseJSON() {
         EditText editText = findViewById(R.id.article);
         String TitleOfArticle = editText.getText().toString();
 
-        String StringURL="";
+        String StringURL = "";
             try {
                 StringURL= "https://api.nytimes.com/svc/search/v2/articlesearch.json?q="
                         + URLEncoder.encode(TitleOfArticle, "UTF-8")
@@ -292,7 +315,6 @@ public class NewYorkTimes extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }, (error) -> {
-                error.printStackTrace();
             });
             queue.add(request);
         } catch (UnsupportedEncodingException e) {
@@ -300,9 +322,16 @@ public class NewYorkTimes extends AppCompatActivity {
         }
     }
 
-        class MyRowHolder extends RecyclerView.ViewHolder {
+    /**
+     * A ViewHolder for the news article titles.
+     */
+    class MyRowHolder extends RecyclerView.ViewHolder {
         TextView title;
 
+        /**
+         * Create new object to get the adapter position
+         * @param itemView representing the title for article
+         */
         public MyRowHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -315,5 +344,4 @@ public class NewYorkTimes extends AppCompatActivity {
             title = itemView.findViewById(R.id.titleList);
         }
     }
-
 }

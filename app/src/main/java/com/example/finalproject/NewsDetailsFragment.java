@@ -9,26 +9,30 @@ import androidx.fragment.app.Fragment;
 
 import com.example.finalproject.databinding.DetailsLayoutBinding;
 
+/**
+ * Class for fragment to display the detail of article
+ * @auther Taeung Park
+ * @version 1.0
+ */
 public class NewsDetailsFragment extends Fragment {
-
-    /** declaration of class object */
+    /** Declaration of NewsData */
     NewsData selected;
-    NewsDetailsFragment binding2;
 
     /**
-     * One-arg constructor to load the class object
-     * @param n class object
+     * Creates a new NewsDetailsFragment object with the specified news article
+     * @param n the news article to display details
      */
     public NewsDetailsFragment(NewsData n){
         selected = n;
     }
 
+
     /**
-     * Method to create and inflate fragment view and to set text to views on fragment
-     * @param inflater the inflater
-     * @param container the container
-     * @param savedInstanceState the saved instance state
-     * @return the view layout
+     * To create and inflate fragment view and to set text to views on fragment
+     * @param inflater the LayoutInflater object
+     * @param container the parent view that the fragment's UI should be attached
+     * @param savedInstanceState the saved state of the fragment
+     * @return the fragment view
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +45,4 @@ public class NewsDetailsFragment extends Fragment {
 
         return binding.getRoot();
     }
-
-
-
 }

@@ -20,7 +20,7 @@
             android:id="@+id/titleList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name goes here"
+            android:text="@string/name"
             android:textColor="@color/black"
             android:textSize="20sp"/>
 

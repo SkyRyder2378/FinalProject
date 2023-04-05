@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Park\'s Android Labs</string>
-    <string name="hello_message">Type in the name of a city: </string>
-    <string name="button_message">Get Forecast</string>
+    <string name="search">Search</string>
+    <string name="Title">Title</string>
+    <string name="Result">Result:</string>
+    <string name="name">Name goes here</string>
+    <string name="date">Date goes here</string>
+    <string name="url">Url goes here</string>
+
 </resources>

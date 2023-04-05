@@ -14,7 +14,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
-        android:text="Name goes here"
+        android:text="@string/name"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Date goes here"
+        android:text="@string/date"
         app:layout_constraintStart_toStartOf="@+id/nameId"
         app:layout_constraintTop_toBottomOf="@+id/nameId" />
 
@@ -36,8 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Url goes here"
+        android:text="@string/url"
+        android:linksClickable="true"
+        android:autoLink="web"
         app:layout_constraintStart_toStartOf="@+id/dateId"
-        app:layout_constraintTop_toBottomOf="@+id/dateId" />
+        app:layout_constraintTop_toBottomOf="@+id/dateId"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
