@@ -95,7 +95,7 @@ public class NewYorkTimes extends AppCompatActivity {
                     break;
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(NewYorkTimes.this);
-                    builder.setMessage("Do you want to add this event to the favourite list: ")
+                    builder.setMessage("Do you want to add this news to the favourite list: ")
                             .setTitle("Question:")
                             .setNegativeButton("No", (dialog, cl) -> {
                             })
@@ -119,7 +119,7 @@ public class NewYorkTimes extends AppCompatActivity {
                     int position = newsModel.titles.getValue().indexOf(newsModel.selectedArticle.getValue());
 
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(NewYorkTimes.this);
-                    builder2.setMessage("Do you want to delete this event from the favourite list: ")
+                    builder2.setMessage("Do you want to delete this news from the favourite list: ")
                             .setTitle("Question:")
                             .setNegativeButton("No", (dialog, cl) -> {
                             })
@@ -135,7 +135,7 @@ public class NewYorkTimes extends AppCompatActivity {
                                 myAdapter.notifyItemRemoved(position);
 
                                 LinearLayout linearLayout = binding.linear;
-                                Snackbar.make(linearLayout, "You deleted event #" + position, Snackbar.LENGTH_LONG)
+                                Snackbar.make(linearLayout, "You deleted news #" + position, Snackbar.LENGTH_LONG)
                                         .setAction("UNDO", clk1 -> {
 
                                             thread.execute(() -> {
