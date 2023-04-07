@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * This is a JavaDoc comment
+ */
 public class SavedWeatherPage extends AppCompatActivity {
     private RecyclerView.Adapter myAdapter;
     private ArrayList<WeatherItem> weatherItems;
