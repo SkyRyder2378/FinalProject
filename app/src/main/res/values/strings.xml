@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FinalProject</string>
+    <string name="saved_weather">Saved Weather</string>
+    <string name="weather_now">Weather Now</string>
+    <string name="nasa_mars_rover_photos">Nasa Mars Rover photos</string>
+    <string name="new_york_times">New York Times</string>
+    <string name="place_kitten_placeholder_images">Place Kitten Placeholder images</string>
+    <string name="weatherstack">WeatherStack</string>
+    <string name="city">City</string>
+    <string name="enter_your_cite">Enter your Cite</string>
+    <string name="search">search</string>
+    <string name="locatetime">locateTime</string>
 </resources>
