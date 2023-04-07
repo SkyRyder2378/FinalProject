@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -17,7 +17,7 @@ public class NewsData {
      */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    protected int id;
+    public int id;
     /**
      * Headline of news
      */

@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.finalproject.Data.NewsData;
 import com.example.finalproject.databinding.DetailsLayoutBinding;
 
 /**

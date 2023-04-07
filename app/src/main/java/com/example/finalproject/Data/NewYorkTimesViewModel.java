@@ -1,7 +1,9 @@
-package com.example.finalproject;
+package com.example.finalproject.Data;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.finalproject.Data.NewsData;
 
 import java.util.ArrayList;
 

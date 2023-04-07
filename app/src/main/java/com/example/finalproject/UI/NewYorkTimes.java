@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -39,6 +38,11 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import com.example.finalproject.Data.NewYorkTimesViewModel;
+import com.example.finalproject.Data.NewsData;
+import com.example.finalproject.Data.NewsDataDAO;
+import com.example.finalproject.Data.NewsDatabase;
+import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityNewyorktimesBinding;
 import com.google.android.material.snackbar.Snackbar;
 

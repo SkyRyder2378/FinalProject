@@ -6,5 +6,6 @@
     <string name="name">Name goes here</string>
     <string name="date">Date goes here</string>
     <string name="url">Url goes here</string>
+    <string name="app_name">Park\'s Android App</string>
 
 </resources>

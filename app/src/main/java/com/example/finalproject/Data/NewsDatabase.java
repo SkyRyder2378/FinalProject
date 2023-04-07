@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Data;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

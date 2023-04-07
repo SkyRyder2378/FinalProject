@@ -1,9 +1,11 @@
-package com.example.finalproject;
+package com.example.finalproject.Data;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.finalproject.Data.NewsData;
 
 import java.util.List;
 
