@@ -156,7 +156,7 @@ public class NewYorkTimes extends AppCompatActivity {
                 {
                     news.addAll( nDAO.getAllList() ); //Once you get the data from database
 
-                    runOnUiThread( () ->  binding.recycleView.setAdapter( myAdapter )); //You can then load the RecyclerView
+                    runOnUiThread( () ->  binding.recycleView.setAdapter( myAdapter )); //You can then load the RecycleView
                 });
                 break;
 
@@ -214,7 +214,7 @@ public class NewYorkTimes extends AppCompatActivity {
 
         setSupportActionBar(binding.myToolbar);
 
-        // SharePre Object to store data
+        // SharePreferences Object to store data
         SharedPreferences prefs = getSharedPreferences("SearchData", Context.MODE_PRIVATE);
         String title = prefs.getString("SearchData", "");
         editText.setText(title);
