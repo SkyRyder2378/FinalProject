@@ -11,6 +11,10 @@
         android:layout_height="match_parent"
         tools:context=".UI.WeatherNowPage"
         android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <androidx.cardview.widget.CardView
             android:layout_margin="5dp"
             app:cardCornerRadius="10dp"
@@ -37,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/search" />
+                    android:text="search" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView

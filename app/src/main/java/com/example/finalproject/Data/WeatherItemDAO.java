@@ -7,6 +7,11 @@ import androidx.room.Query;
 
 import java.util.List;
 
+/**
+ * This interface for the databse
+ * @author Abdullah Sabbagh
+ * @version 01
+ */
 @Dao
 public interface WeatherItemDAO {
 
