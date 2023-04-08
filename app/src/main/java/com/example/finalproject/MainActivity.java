@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.finalproject.UI.NasaPage;
 import com.example.finalproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Button nasaButton = variableBinding.nasaButton;
 
         nasaButton.setOnClickListener(clk -> {
-            Intent nasaPage = new Intent(MainActivity.this, NasaActivity.class);
+            Intent nasaPage = new Intent(MainActivity.this, NasaPage.class);
             startActivity(nasaPage);
         });
 

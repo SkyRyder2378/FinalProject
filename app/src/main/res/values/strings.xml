@@ -2,4 +2,8 @@
     <string name="app_name">FinalProject</string>
     <string name="nasa_button">Nasa Mars Rover photos</string>
     <string name="nasa_search_bar">Enter number between 0-1000</string>
+    <string name="nasa_photos">Nasa Photos</string>
+    <string name="saved_photos">Saved Photos</string>
+    <string name="save_button">Save</string>
+    <string name="delete_button">Delete</string>
 </resources>

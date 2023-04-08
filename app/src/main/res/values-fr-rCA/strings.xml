@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="nasa_button">photos de la Nasa Mars Rover</string>
+    <string name="nasa_search_bar">Entrer des nombres entre 1 et 1000</string>
+    <string name="nasa_photos">Photos de la Nasa</string>
+    <string name="saved_photos">Images Enregistrées</string>
+    <string name="save_button">Sauvegarder</string>
+    <string name="delete_button">Effacer</string>
+</resources>

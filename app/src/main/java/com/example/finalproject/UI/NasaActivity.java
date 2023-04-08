@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +23,14 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.finalproject.Data.NasaPhotoDatabase;
+import com.example.finalproject.Data.NasaPhotoInfo;
+import com.example.finalproject.Data.NasaPhotoInfoDAO;
+import com.example.finalproject.Data.NasaViewModel;
+import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityNasaBinding;
 import com.example.finalproject.databinding.NasaPhotoBinding;
 
@@ -41,39 +47,51 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/** This class controls the nasa rovers photos activity
+ * @author Laura Mayer 040 882 118
+ * @version 1.0
+ */
 public class NasaActivity extends AppCompatActivity {
 
+    /** This holds the binding of the nasa activity */
     private ActivityNasaBinding binding;
 
+    /** This holds the shared preferences */
     SharedPreferences prefs;
 
+    /** This holds the request queue for accessing the information */
     RequestQueue queue = null;
 
+    /** This holds the RecyclerView Adapter */
     RecyclerView.Adapter nasaAdapter;
 
+    /** This holds the array of nasa photo objects */
     ArrayList<NasaPhotoInfo> nasaPhotos;
 
+    /** This holds the nasa view model */
     NasaViewModel nasaModel;
 
-    NasaPhotoInfoDAO nasaDAO;
 
-
+    /** This method creates and controls the activity nasa
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        NasaPhotoDatabase db = Room.databaseBuilder(getApplicationContext(), NasaPhotoDatabase.class, "nasa-photos").build();
-        nasaDAO = db.nPDAO();
 
         queue = Volley.newRequestQueue(this);
 
         prefs = getSharedPreferences("NasaData", Context.MODE_PRIVATE);
 
-        String searchBar = prefs.getString("searchBar", "");
-        binding.nasaSearchBar.setText(searchBar);
-
         binding = ActivityNasaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        String defaultS = "";
+        String searchBar = prefs.getString("searchBar", defaultS);
+        binding.nasaSearchBar.setText(searchBar);
 
         binding.nasaRecycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -81,12 +99,6 @@ public class NasaActivity extends AppCompatActivity {
         nasaPhotos = nasaModel.nasaPhotos.getValue();
         if(nasaPhotos == null){
             nasaModel.nasaPhotos.setValue(nasaPhotos = new ArrayList<>());
-
-            Executor thread = Executors.newSingleThreadExecutor();
-            thread.execute(() -> {
-                nasaPhotos.addAll(nasaDAO.getAllImages());
-                binding.nasaRecycler.setAdapter(nasaAdapter);
-            });
         }
 
         binding.nasaSearchButton.setOnClickListener(click -> {
@@ -97,20 +109,18 @@ public class NasaActivity extends AppCompatActivity {
             int s = Integer.parseInt(search);
             if(s >=0 && s<=1000){
                 String stringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol="+s+"&api_key=ZTccaVancF9fVehaEVHOQPuoAvuWyzcAKJggN4DW";
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, stringURL, null,
-                        new Response.Listener<JSONObject>() {
+                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, stringURL, null,
+                        new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response){
+                    public void onResponse(JSONArray response){
                         try{
-                            JSONObject jsonPhotos = response.getJSONObject("photos");
-                            JSONArray jsonPhotoArray = new JSONArray();
-                            jsonPhotoArray.put(jsonPhotos);
+                            JSONArray jsonPhotos = response.getJSONArray(1);
 
                             int length = jsonPhotos.length();
                             JSONObject tempItem;
                             NasaPhotoInfo tempPhoto;
                             for(int i=0; i<=length; i++){
-                                tempItem = jsonPhotoArray.getJSONObject(i);
+                                tempItem = jsonPhotos.getJSONObject(i);
                                 JSONObject cameraArray = tempItem.getJSONObject("camera");
                                 String imageURL = tempItem.getString("img_scr");
                                 JSONObject roverArray = tempItem.getJSONObject("rover");
@@ -132,14 +142,12 @@ public class NasaActivity extends AppCompatActivity {
                                 tempPhoto = new NasaPhotoInfo(tempImg, roverName, cameraName, imageURL);
                                 nasaPhotos.add(tempPhoto);
                                 nasaAdapter.notifyItemInserted(nasaPhotos.size()-1);
-
                             }
                         } catch(JSONException jE){ jE.printStackTrace(); }
                     }
                     }
                     , (error) -> {  });
                 queue.add(request);
-
             }
         });
 
@@ -151,8 +159,6 @@ public class NasaActivity extends AppCompatActivity {
             transaction.commit();
             transaction.addToBackStack("");
         });
-
-
 
         binding.nasaRecycler.setAdapter(nasaAdapter = new RecyclerView.Adapter<NasaRowHolder>() {
             @NonNull
@@ -182,11 +188,20 @@ public class NasaActivity extends AppCompatActivity {
         });
     }
 
+    /** This is an inner class that creates a row holder for the gathered nasa photo objects
+     *
+     */
     class NasaRowHolder extends RecyclerView.ViewHolder{
 
+        /** This holds an image view that contains the rover image */
         ImageView marsImage;
+        /** This holds a text view that contains the rover name */
         TextView roverName;
 
+        /** This method creates an item view of the rover photo object
+         *
+         * @param itemView
+         */
         public NasaRowHolder(@NonNull View itemView){
             super(itemView);
 
@@ -202,6 +217,9 @@ public class NasaActivity extends AppCompatActivity {
         }
     }
 
+    /** This method activates on pause to same the shared preferences
+     *
+     */
     @Override
     protected void onPause() {
         super.onPause();
