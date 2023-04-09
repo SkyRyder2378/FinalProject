@@ -17,6 +17,33 @@
             android:name=".UI.SavedWeatherPage"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
+
+        <activity
+            android:name=".UI.NasaSavedPhotos"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".UI.NasaPage"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".UI.NasaActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+
+
+
+
+
+
+
+        <activity
+            android:name=".UI.NewYorkTimes"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+
+
+
         <activity
             android:name=".UI.WeatherNowPage"
             android:configChanges="orientation|screenSize"
@@ -27,10 +54,6 @@
             android:exported="false" />
         <activity
             android:name=".UI.NewYorkPage"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".UI.NasaPage"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity

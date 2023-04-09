@@ -3,8 +3,10 @@ package com.example.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.example.finalproject.UI.NasaPage;
 import com.example.finalproject.UI.NewYorkPage;
+import com.example.finalproject.UI.NewYorkTimes;
 import com.example.finalproject.UI.PlaceKittenPage;
 import com.example.finalproject.UI.WeatherStackPage;
 import com.example.finalproject.databinding.ActivityMainBinding;
@@ -24,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
     }
     void navigation(){
         binding.nasa.setOnClickListener(clk->{
-            Intent NasaPage=new Intent(this,NasaPage.class);
+            Intent NasaPage=new Intent(this, NasaPage.class);
             startActivity(NasaPage);
         });
         binding.newYork.setOnClickListener(clk->{
-            Intent NewYorkPage=new Intent(this, NewYorkPage.class);
+            Intent NewYorkPage=new Intent(this, NewYorkTimes.class);
             startActivity(NewYorkPage);
         });
         binding.kitten.setOnClickListener(clk->{

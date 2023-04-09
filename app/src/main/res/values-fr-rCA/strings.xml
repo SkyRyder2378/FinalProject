@@ -11,4 +11,20 @@
     <string name="enter_your_cite">Entrez votre ville ici</string>
     <string name="search">Recherche</string>
     <string name="locatetime">Localiser l\'heure</string>
+
+
+
+    <string name="nasa_button">photos de la Nasa Mars Rover</string>
+    <string name="nasa_search_bar">Entrer des nombres entre 1 et 1000</string>
+    <string name="nasa_photos">Photos de la Nasa</string>
+    <string name="saved_photos">Images Enregistrées</string>
+    <string name="save_button">Sauvegarder</string>
+    <string name="delete_button">Effacer</string>
+    <string name="Title">\??</string>
+    <string name="Result">\??</string>
+    <string name="name">\??</string>
+    <string name="date">\??</string>
+    <string name="url">\???</string>
+
+
 </resources>

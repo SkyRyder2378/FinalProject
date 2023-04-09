@@ -3,11 +3,9 @@ package com.example.finalproject.UI;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,8 +27,7 @@ import com.example.finalproject.Data.WeatherItem;
 import com.example.finalproject.Data.WeatherItemDAO;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityWeatherNowPageBinding;
-import com.google.android.material.snackbar.Snackbar;
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.File;

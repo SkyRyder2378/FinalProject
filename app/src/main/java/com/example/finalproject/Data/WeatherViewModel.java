@@ -1,10 +1,7 @@
 package com.example.finalproject.Data;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 /**
