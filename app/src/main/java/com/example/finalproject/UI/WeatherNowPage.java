@@ -3,9 +3,11 @@ package com.example.finalproject.UI;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
-
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,7 +29,8 @@ import com.example.finalproject.Data.WeatherItem;
 import com.example.finalproject.Data.WeatherItemDAO;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityWeatherNowPageBinding;
-
+import com.google.android.material.snackbar.Snackbar;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.File;
@@ -61,7 +64,7 @@ public class WeatherNowPage extends AppCompatActivity {
     /**
      * This contain the API key
      */
-    private static String apiKey = "edf449bdd0ca749e25b626405a399d41";
+    private static String apiKey = "3ab6d6cb7c4255f99cf3aa7b920ccbfc";
 
     /**
      * This is to show the menue
@@ -80,14 +83,9 @@ public class WeatherNowPage extends AppCompatActivity {
         switch( item.getItemId() ) {
             case R.id.Item_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(WeatherNowPage.this);
-                builder.setMessage("•\tClick on “Weather now”:\n" +
-                                "   o\tType in the city you would like to \n       retrieve the weather details.\n" +
-                                "   o\tHit search.\n" +
-                                "   o\tYou may save your research for future \n       retrieval, by hitting on save button.  \n\n" +
-                                "•\tClick on “Saved weather”:\n" +
-                                "   o\tYou may navigate between the saved \n       destination to display the respective \n       weather.\n" ).
-                        setTitle("How to use the WeatherStack?").
-                        setNegativeButton("ok", (dialog, cl) -> {
+                builder.setMessage(R.string.about_message).
+                        setTitle(R.string.about_title).
+                        setNegativeButton(R.string.ok, (dialog, cl) -> {
                         }).create().show();
                 break;
         }
@@ -100,7 +98,7 @@ public class WeatherNowPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Weather Now");
+        setTitle(R.string.weather_now);
         queue = Volley.newRequestQueue(this);
         binding = ActivityWeatherNowPageBinding.inflate(getLayoutInflater());
         setSupportActionBar(binding.toolbar);

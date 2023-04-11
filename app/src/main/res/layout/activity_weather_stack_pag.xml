@@ -24,7 +24,7 @@
             android:layout_margin="20dp" >
             <TextView
                 android:textColor="@color/textColor"
-                android:text="Weather Now"
+                android:text="@string/weather_now"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="25dp"
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Saved Weather"
+                android:text="@string/saved_weather"
                 android:textAlignment="center"
                 android:textSize="25dp"
                 android:textStyle="bold" />

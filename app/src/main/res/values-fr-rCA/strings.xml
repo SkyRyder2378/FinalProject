@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FinalProject</string>
-    <string name="saved_weather">Météo enregistrée</string>
-    <string name="weather_now">temps maintenant</string>
-    <string name="nasa_mars_rover_photos">Photo du rover martien de la NASA</string>
-    <string name="new_york_times">New York Times</string>
-    <string name="place_kitten_placeholder_images">Placer une image de balise pour chaton</string>
-    <string name="weatherstack">Pile météo</string>
-    <string name="city">ville</string>
-    <string name="enter_your_cite">Entrez votre ville ici</string>
-    <string name="search">Recherche</string>
-    <string name="locatetime">Localiser l\'heure</string>
+
 
 
 
@@ -25,6 +16,45 @@
     <string name="name">\??</string>
     <string name="date">\??</string>
     <string name="url">\???</string>
+
+
+
+
+    <string name="saved_weather">Météo enregistrée</string>
+    <string name="weather_now">temps maintenant</string>
+    <string name="nasa_mars_rover_photos">Photo du rover martien de la NASA</string>
+    <string name="new_york_times">New York Times</string>
+    <string name="place_kitten_placeholder_images">Placer une image de balise pour chaton</string>
+    <string name="weatherstack">Pile météo</string>
+    <string name="city">ville</string>
+    <string name="enter_your_cite">Entrez votre ville ici</string>
+    <string name="search">Recherche</string>
+    <string name="locatetime">Localiser l\'heure</string>
+    <string name="search_btn">recherche</string>
+    <string name="about_message">Cliquez sur \"Météo maintenant\": Tapez la ville dont vous souhaitez récupérer les détails météo. Lancez la recherche. Vous pouvez enregistrer votre recherche pour une récupération future, en appuyant sur le bouton Enregistrer. Cliquez sur Météo enregistrée Vous pouvez naviguer entre les destinations enregistrées pour afficher la météo respective.</string>
+    <string name="about_title">Comment utiliser la WeatherStack ?</string>
+    <string name="about">à propos</string>
+    <string name="ok">d\'accord</string>
+    <string name="undo">annuler</string>
+    <string name="you_deleted_city">Vous avez supprimé la ville</string>
+    <string name="do_you_want_to_delete_this_city">"Voulez-vous supprimer cette ville : "</string>
+    <string name="question">Question</string>
+    <string name="no">" Non"</string>
+    <string name="yes">Oui</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </resources>
