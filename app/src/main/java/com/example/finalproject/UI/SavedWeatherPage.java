@@ -72,11 +72,12 @@ public class SavedWeatherPage extends AppCompatActivity {
             case R.id.Item_1:
                 if (weatherItems.size() != 0 && IsSelected) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SavedWeatherPage.this);
-                    builder.setMessage("Do you want to Delete this City : " + tv_city.getText().toString()).
-                            setTitle("Question").
-                            setNegativeButton("no", (dialog, cl) -> {
+                    builder.setMessage(getString(R.string.do_you_want_to_delete_this_city) + tv_city.getText().toString()).
+                            setTitle(R.string.question).
+                            setNegativeButton(R.string.no, (dialog, cl) -> {
                             })
-                            .setPositiveButton("yes", (dialog, cl) -> {
+                            .setPositiveButton(R.string.yes
+                                    , (dialog, cl) -> {
                                 WeatherItem removedItem = weatherItems.get(position);
                                 thread.execute(() ->
                                 {
@@ -86,8 +87,8 @@ public class SavedWeatherPage extends AppCompatActivity {
                                     weatherItems.remove(position);
                                     myAdapter.notifyItemRemoved(position);
                                 });
-                                Snackbar.make(binding.getRoot(), "You deleted City " + tv_city.getText(), Snackbar.LENGTH_SHORT)
-                                        .setAction("Undo", c -> {
+                                Snackbar.make(binding.getRoot(), getString(R.string.you_deleted_city) + tv_city.getText(), Snackbar.LENGTH_SHORT)
+                                        .setAction(R.string.undo, c -> {
                                             weatherItems.add(position, removedItem);
                                             myAdapter.notifyItemInserted(position);
                                         }).show();
@@ -98,14 +99,9 @@ public class SavedWeatherPage extends AppCompatActivity {
                 break;
             case R.id.Item_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(SavedWeatherPage.this);
-                builder.setMessage("•\tClick on “Weather now”:\n" +
-                                "   o\tType in the city you would like to \n       retrieve the weather details.\n" +
-                                "   o\tHit search.\n" +
-                                "   o\tYou may save your research for future \n       retrieval, by hitting on save button.  \n\n" +
-                                "•\tClick on “Saved weather”:\n" +
-                                "   o\tYou may navigate between the saved \n       destination to display the respective \n       weather.\n" ).
-                        setTitle("How to use the WeatherStack?").
-                        setNegativeButton("ok", (dialog, cl) -> {
+                builder.setMessage(R.string.about_message ).
+                        setTitle(R.string.about_title).
+                        setNegativeButton(R.string.ok, (dialog, cl) -> {
                         }).create().show();
                 break;
         }
@@ -118,7 +114,7 @@ public class SavedWeatherPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySavedWeatherPageBinding.inflate(getLayoutInflater());
-        setTitle("Saved Weather");
+        setTitle(R.string.saved_weather);
         setSupportActionBar(binding.toolbar);
         weatherModel = new ViewModelProvider(this).get(WeatherViewModel.class);
         weatherItems = weatherModel.weatherItems.getValue();
@@ -211,11 +207,11 @@ public class SavedWeatherPage extends AppCompatActivity {
             });
             itemView.setOnLongClickListener(click -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SavedWeatherPage.this);
-                builder.setMessage("Do you want to Delete this message : " + city.getText()).
-                        setTitle("Question").
-                        setNegativeButton("no", (dialog, cl) -> {
+                builder.setMessage(String.valueOf(R.string.do_you_want_to_delete_this_city)+ city.getText()).
+                        setTitle(R.string.question).
+                        setNegativeButton(R.string.no, (dialog, cl) -> {
                         })
-                        .setPositiveButton("yes", (dialog, cl) -> {
+                        .setPositiveButton(R.string.yes, (dialog, cl) -> {
                             int Position = getAbsoluteAdapterPosition();
                             WeatherItem removedItem = weatherItems.get(Position);
                             thread.execute(() ->
@@ -226,8 +222,8 @@ public class SavedWeatherPage extends AppCompatActivity {
                                 weatherItems.remove(Position);
                                 myAdapter.notifyItemRemoved(Position);
                             });
-                            Snackbar.make(itemView, "You deleted message # " + city.getText(), Snackbar.LENGTH_SHORT)
-                                    .setAction("Undo", c -> {
+                            Snackbar.make(itemView, String.valueOf(R.string.you_deleted_city )+ city.getText(), Snackbar.LENGTH_SHORT)
+                                    .setAction(R.string.undo, c -> {
                                         weatherItems.add(Position, removedItem);
                                         myAdapter.notifyItemInserted(Position);
                                     }).show();

@@ -10,4 +10,15 @@
     <string name="enter_your_cite">Enter your Cite</string>
     <string name="search">search</string>
     <string name="locatetime">locateTime</string>
+    <string name="search_btn">search</string>
+    <string name="about_message">Click on “Weather now”:Type in the city you would like to retrieve the weather details.Hit search. You may save your research for future retrieval, by hitting on save button. Click on Saved weather You may navigate between the saved destination to display the respective weather.</string>
+    <string name="about_title">How to use the WeatherStack?</string>
+    <string name="about">about</string>
+    <string name="ok">ok</string>
+    <string name="undo">Undo</string>
+    <string name="you_deleted_city">"You deleted City "</string>
+    <string name="do_you_want_to_delete_this_city">"Do you want to Delete this City : "</string>
+    <string name="question">Question</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
 </resources>

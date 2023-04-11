@@ -41,14 +41,9 @@ public class WeatherStackPage extends AppCompatActivity {
         switch( item.getItemId() ) {
             case R.id.Item_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(WeatherStackPage.this);
-                builder.setMessage("•\tClick on “Weather now”:\n" +
-                                "   o\tType in the city you would like to \n       retrieve the weather details.\n" +
-                                "   o\tHit search.\n" +
-                                "   o\tYou may save your research for future \n       retrieval, by hitting on save button.  \n\n" +
-                                "•\tClick on “Saved weather”:\n" +
-                                "   o\tYou may navigate between the saved \n       destination to display the respective \n       weather.\n" ).
-                        setTitle("How to use the WeatherStack?").
-                        setNegativeButton("ok", (dialog, cl) -> {
+                builder.setMessage(R.string.about_message ).
+                        setTitle(R.string.about_title).
+                        setNegativeButton(R.string.ok, (dialog, cl) -> {
                         }).create().show();
                 break;
         }
@@ -60,7 +55,7 @@ public class WeatherStackPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Weather Stack");
+        setTitle(R.string.weatherstack);
         binding= ActivityWeatherStackPagBinding.inflate(getLayoutInflater());
         setSupportActionBar(binding.toolbar);
         setContentView(binding.getRoot());

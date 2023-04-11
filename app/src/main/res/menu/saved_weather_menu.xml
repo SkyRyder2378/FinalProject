@@ -8,6 +8,6 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/Item_2"
-        android:title="about"
+        android:title="@string/about"
         app:showAsAction="never" />
 </menu>

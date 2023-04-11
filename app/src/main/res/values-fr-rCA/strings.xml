@@ -11,4 +11,15 @@
     <string name="enter_your_cite">Entrez votre ville ici</string>
     <string name="search">Recherche</string>
     <string name="locatetime">Localiser l\'heure</string>
+    <string name="search_btn">recherche</string>
+    <string name="about_message">Cliquez sur \"Météo maintenant\": Tapez la ville dont vous souhaitez récupérer les détails météo. Lancez la recherche. Vous pouvez enregistrer votre recherche pour une récupération future, en appuyant sur le bouton Enregistrer. Cliquez sur Météo enregistrée Vous pouvez naviguer entre les destinations enregistrées pour afficher la météo respective.</string>
+    <string name="about_title">Comment utiliser la WeatherStack ?</string>
+    <string name="about">à propos</string>
+    <string name="ok">d\'accord</string>
+    <string name="undo">annuler</string>
+    <string name="you_deleted_city">Vous avez supprimé la ville</string>
+    <string name="do_you_want_to_delete_this_city">"Voulez-vous supprimer cette ville : "</string>
+    <string name="question">Question</string>
+    <string name="no">" Non"</string>
+    <string name="yes">Oui</string>
 </resources>
