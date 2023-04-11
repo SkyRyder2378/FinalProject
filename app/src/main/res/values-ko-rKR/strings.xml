@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">나의 안드로이드</string>
+    <string name="search">검색</string>
+    <string name="Title">제목</string>
+    <string name="Result">결과:</string>
+    <string name="name">이름은 여기</string>
+    <string name="date">날짜는 여기</string>
+    <string name="url">주소는 여기</string>
+
+</resources>
