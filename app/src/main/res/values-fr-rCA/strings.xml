@@ -2,9 +2,6 @@
 <resources>
     <string name="app_name">FinalProject</string>
 
-
-
-
     <string name="nasa_button">photos de la Nasa Mars Rover</string>
     <string name="nasa_search_bar">Entrer des nombres entre 1 et 1000</string>
     <string name="nasa_photos">Photos de la Nasa</string>
@@ -16,9 +13,6 @@
     <string name="name">\??</string>
     <string name="date">\??</string>
     <string name="url">\???</string>
-
-
-
 
     <string name="saved_weather">Météo enregistrée</string>
     <string name="weather_now">temps maintenant</string>
@@ -48,10 +42,7 @@
     <string name="enter_camera_name">Entrez le Nom de la Caméra</string>
     <string name="enter_url">Entrer l\'URL</string>
 
-
-
-
-
+    <string name="sample_input">Exemple d\'Entrée</string>
     <string name="kitten_about_message">taper la largeur et la hauteur pour obtenir une image de chaton avec ces dimensions, enregistrer l\'image et les dimensions du chaton et DateTime, vue recycleur pour afficher les éléments</string>
     <string name="kitten_about_title">Comment utiliser le chaton Place ?</string>
 
@@ -59,7 +50,6 @@
     <string name="you_deleted_image_with_date">Vous avez supprimé l\'image avec la date</string>
 
     <string name="favourite_kitten_images">Images de chaton préférées</string>
-
 
     <string name="width">largeur</string>
     <string name="height">hauteur</string>
@@ -69,19 +59,6 @@
     <string name="search_kitten_image">Rechercher une image de chaton</string>
 
     <string name="image_saved">image enregistrée</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </resources>

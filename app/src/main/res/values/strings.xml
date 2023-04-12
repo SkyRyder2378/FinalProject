@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">FinalProject</string>
 
-
-
-
     <string name="nasa_button">Nasa Mars Rover photos</string>
     <string name="nasa_search_bar">Enter number between 0-1000</string>
     <string name="nasa_photos">Nasa Photos</string>
@@ -11,19 +8,11 @@
     <string name="save_button">Save</string>
     <string name="delete_button">Delete</string>
 
-
-
-
-
-
-
     <string name="Title">Title</string>
     <string name="Result">Result:</string>
     <string name="name">Name goes here</string>
     <string name="date">Date goes here</string>
     <string name="url">Url goes here</string>
-
-
 
     <string name="saved_weather">Saved Weather</string>
     <string name="weather_now">Weather Now</string>
@@ -54,17 +43,6 @@
     <string name="enter_url">Enter URL</string>
     <string name="sample_input">Sample Input</string>
 
-
-
-
-
-
-
-
-
-
-
-
     <string name="kitten_about_message">typing width and height to get a kitten image with these dimensions,save kitten image and  dimensions and DateTime,recycler view  to show items</string>
     <string name="kitten_about_title">How to use the Place kitten?</string>
 
@@ -72,7 +50,6 @@
     <string name="you_deleted_image_with_date">"You deleted image with date "</string>
 
     <string name="favourite_kitten_images">Favourite Kitten Images</string>
-
 
     <string name="width">width</string>
     <string name="height">height</string>
