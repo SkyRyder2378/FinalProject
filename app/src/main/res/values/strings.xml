@@ -2,8 +2,6 @@
     <string name="app_name">FinalProject</string>
 
 
-
-
     <string name="nasa_button">Nasa Mars Rover photos</string>
     <string name="nasa_search_bar">Enter number between 0-1000</string>
     <string name="nasa_photos">Nasa Photos</string>
@@ -12,17 +10,11 @@
     <string name="delete_button">Delete</string>
 
 
-
-
-
-
-
     <string name="Title">Title</string>
     <string name="Result">Result:</string>
     <string name="name">Name goes here</string>
     <string name="date">Date goes here</string>
     <string name="url">Url goes here</string>
-
 
 
     <string name="saved_weather">Saved Weather</string>
@@ -46,23 +38,13 @@
     <string name="question">Question</string>
     <string name="no">no</string>
     <string name="yes">yes</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="rover_name">Rover Name</string>
+    <string name="camera_name">Camera Name</string>
+    <string name="url_input">URL</string>
+    <string name="enter_rover_name">Enter Rover Name</string>
+    <string name="enter_camera_name">Enter Camera Name</string>
+    <string name="enter_url">Enter URL</string>
+    <string name="sample_input">Sample Input</string>
 
 
 </resources>

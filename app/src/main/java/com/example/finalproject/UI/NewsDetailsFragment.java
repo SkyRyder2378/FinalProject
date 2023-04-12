@@ -12,7 +12,7 @@ import com.example.finalproject.databinding.DetailsLayoutBinding;
 
 /**
  * Class for fragment to display the detail of article
- * @auther Taeung Park
+ * @author Taeung Park
  * @version 1.0
  */
 public class NewsDetailsFragment extends Fragment {

@@ -44,5 +44,14 @@ public class NasaPage extends AppCompatActivity {
             startActivity(savesPage);
         });
 
+        Button inputButton = binding.sampleInputButton;
+
+        inputButton.setOnClickListener(clk -> {
+            Intent samplePage = new Intent(NasaPage.this, NasaSampleInput.class);
+            startActivity(samplePage);
+        });
+
+
+
     }
 }

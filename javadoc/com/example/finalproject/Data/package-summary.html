@@ -20,15 +20,15 @@
 <script type="text/javascript"><!--
     try {
         if (location.href.indexOf('is-external=true') == -1) {
-            parent.document.title="com.example.finalproject.DataWeather (app API)";
+            parent.document.title="com.example.finalproject.Data (app API)";
         }
     }
     catch(err) {
     }
 //-->
-    var pathtoroot = "../../../../";
-    var useModuleDirectories = true;
-    loadScripts(document, 'script');</script>
+var pathtoroot = "../../../../";
+var useModuleDirectories = true;
+loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
@@ -92,7 +92,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </header>
 <main role="main">
 <div class="header">
-<h1 title="Package" class="title">Package&nbsp;com.example.finalproject.DataWeather</h1>
+<h1 title="Package" class="title">Package&nbsp;com.example.finalproject.Data</h1>
 </div>
 <div class="contentContainer">
 <ul class="blockList">
@@ -105,8 +105,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="WeatherItemDAO.html" title="interface in com.example.finalproject.DataWeather">WeatherItemDAO</a></th>
-<td class="colLast">&nbsp;</td>
+<th class="colFirst" scope="row"><a href="NasaPhotoInfoDAO.html" title="interface in com.example.finalproject.Data">NasaPhotoInfoDAO</a></th>
+<td class="colLast">
+<div class="block">This class is the Database Access object for the rover image database</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="NewsDataDAO.html" title="interface in com.example.finalproject.Data">NewsDataDAO</a></th>
+<td class="colLast">
+<div class="block">Interface class to interact with the the database</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="WeatherItemDAO.html" title="interface in com.example.finalproject.Data">WeatherItemDAO</a></th>
+<td class="colLast">
+<div class="block">This interface for the databse</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -120,16 +134,68 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="WeatherDatabase.html" title="class in com.example.finalproject.DataWeather">WeatherDatabase</a></th>
-<td class="colLast">&nbsp;</td>
+<th class="colFirst" scope="row"><a href="NasaPhotoDatabase.html" title="class in com.example.finalproject.Data">NasaPhotoDatabase</a></th>
+<td class="colLast">
+<div class="block">This class creates the database</div>
+</td>
 </tr>
 <tr class="rowColor">
-<th class="colFirst" scope="row"><a href="WeatherItem.html" title="class in com.example.finalproject.DataWeather">WeatherItem</a></th>
+<th class="colFirst" scope="row"><a href="NasaPhotoInfo.html" title="class in com.example.finalproject.Data">NasaPhotoInfo</a></th>
+<td class="colLast">
+<div class="block">This class is the object that can be inserted into the database</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="NasaViewModel.html" title="class in com.example.finalproject.Data">NasaViewModel</a></th>
+<td class="colLast">
+<div class="block">This class</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="NewsData.html" title="class in com.example.finalproject.Data">NewsData</a></th>
+<td class="colLast">
+<div class="block">Class to store the variable value of news from external API</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="NewsDatabase.html" title="class in com.example.finalproject.Data">NewsDatabase</a></th>
+<td class="colLast">
+<div class="block">An abstract class for NewsDatabase</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="NewsDetailsFragment.html" title="class in com.example.finalproject.Data">NewsDetailsFragment</a></th>
+<td class="colLast">
+<div class="block">Class for fragment to display the detail of article</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="NewYorkTimes.html" title="class in com.example.finalproject.Data">NewYorkTimes</a></th>
+<td class="colLast">
+<div class="block">This is class for Activity of New York Times</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="NewYorkTimesViewModel.html" title="class in com.example.finalproject.Data">NewYorkTimesViewModel</a></th>
+<td class="colLast">
+<div class="block">This class extends ViewModel for storing mutable live data</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="WeatherDatabase.html" title="class in com.example.finalproject.Data">WeatherDatabase</a></th>
+<td class="colLast">
+<div class="block">This class represent the database of WeatherStack</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="WeatherItem.html" title="class in com.example.finalproject.Data">WeatherItem</a></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="WeatherViewModel.html" title="class in com.example.finalproject.DataWeather">WeatherViewModel</a></th>
-<td class="colLast">&nbsp;</td>
+<th class="colFirst" scope="row"><a href="WeatherViewModel.html" title="class in com.example.finalproject.Data">WeatherViewModel</a></th>
+<td class="colLast">
+<div class="block">This is the view model of the Weatherstack</div>
+</td>
 </tr>
 </tbody>
 </table>

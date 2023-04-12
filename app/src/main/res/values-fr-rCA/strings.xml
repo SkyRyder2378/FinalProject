@@ -41,20 +41,12 @@
     <string name="question">Question</string>
     <string name="no">" Non"</string>
     <string name="yes">Oui</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="rover_name">Nom du Rover</string>
+    <string name="camera_name">Nom de la Caméra</string>
+    <string name="url_input">URL</string>
+    <string name="enter_rover_name">Entrez le Nom du Rover</string>
+    <string name="enter_camera_name">Entrez le Nom de la Caméra</string>
+    <string name="enter_url">Entrer l\'URL</string>
 
 
 </resources>

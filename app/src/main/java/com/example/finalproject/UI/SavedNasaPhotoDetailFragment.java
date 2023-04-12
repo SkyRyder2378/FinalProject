@@ -84,7 +84,6 @@ public class SavedNasaPhotoDetailFragment extends Fragment {
                 Snackbar.make(binding.roverImageFull, "You deleted the current photo", Snackbar.LENGTH_LONG).show();
             });
             builder.create().show();
-
         });
 
         return binding.getRoot();

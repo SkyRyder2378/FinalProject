@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -94,7 +94,7 @@ loadScripts(document, 'script');</script>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -114,7 +114,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!-- ======== START OF CLASS DATA ======== -->
 <main role="main">
 <div class="header">
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.example.finalproject.Data.UIWeather</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.example.finalproject.UI</a></div>
 <h2 title="Class SavedWeatherPage" class="title">Class SavedWeatherPage</h2>
 </div>
 <div class="contentContainer">
@@ -176,7 +176,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SavedWeatherPage</span>
 extends androidx.appcompat.app.AppCompatActivity</pre>
-<div class="block">This is a JavaDoc comment</div>
+<div class="block">This class contains the saved weather captured</div>
 </li>
 </ul>
 </div>
@@ -207,6 +207,24 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>(package private) int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#position">position</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>android.widget.TextView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tv_city">tv_city</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a id="fields.inherited.from.class.android.app.Activity">
 <!--   -->
@@ -271,6 +289,18 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(android.os.Bundle&nbsp;savedInstanceState)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu</a></span>&#8203;(android.view.Menu&nbsp;menu)</code></th>
+<td class="colLast">
+<div class="block">Constructor</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected</a></span>&#8203;(android.view.MenuItem&nbsp;item)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.androidx.appcompat.app.AppCompatActivity">
@@ -305,7 +335,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;android.app.Activity</h3>
-<code>closeContextMenu, createPendingResult, dismissDialog, dismissKeyboardShortcutsHelper, dispatchGenericMotionEvent, dispatchPopulateAccessibilityEvent, dispatchTouchEvent, dispatchTrackballEvent, enterPictureInPictureMode, enterPictureInPictureMode, finish, finishActivity, finishActivityFromChild, finishAffinity, finishAfterTransition, finishAndRemoveTask, finishFromChild, getActionBar, getApplication, getCallingActivity, getCallingPackage, getChangingConfigurations, getComponentName, getContentScene, getContentTransitionManager, getCurrentFocus, getFragmentManager, getIntent, getLastNonConfigurationInstance, getLayoutInflater, getLoaderManager, getLocalClassName, getMaxNumPictureInPictureActions, getMediaController, getOnBackInvokedDispatcher, getParent, getParentActivityIntent, getPreferences, getReferrer, getRequestedOrientation, getSearchEvent, getSplashScreen, getSystemService, getTaskId, getTitle, getTitleColor, getVoiceInteractor, getVolumeControlStream, getWindow, getWindowManager, hasWindowFocus, isActivityTransitionRunning, isChangingConfigurations, isChild, isDestroyed, isFinishing, isImmersive, isInMultiWindowMode, isInPictureInPictureMode, isLaunchedFromBubble, isLocalVoiceInteractionSupported, isTaskRoot, isVoiceInteraction, isVoiceInteractionRoot, managedQuery, moveTaskToBack, navigateUpTo, navigateUpToFromChild, onActionModeFinished, onActionModeStarted, onActivityReenter, onApplyThemeResource, onAttachedToWindow, onAttachFragment, onChildTitleChanged, onContextItemSelected, onContextMenuClosed, onCreate, onCreateContextMenu, onCreateDescription, onCreateDialog, onCreateDialog, onCreateNavigateUpTaskStack, onCreateOptionsMenu, onCreatePanelView, onCreateThumbnail, onDetachedFromWindow, onEnterAnimationComplete, onGenericMotionEvent, onGetDirectActions, onKeyLongPress, onKeyMultiple, onKeyShortcut, onKeyUp, onLocalVoiceInteractionStarted, onLocalVoiceInteractionStopped, onNavigateUp, onNavigateUpFromChild, onOptionsItemSelected, onOptionsMenuClosed, onPerformDirectAction, onPictureInPictureRequested, onPictureInPictureUiStateChanged, onPostCreate, onPrepareDialog, onPrepareDialog, onPrepareNavigateUpTaskStack, onPrepareOptionsMenu, onProvideAssistContent, onProvideAssistData, onProvideKeyboardShortcuts, onProvideReferrer, onRestart, onRestoreInstanceState, onRestoreInstanceState, onSaveInstanceState, onSearchRequested, onSearchRequested, onTopResumedActivityChanged, onTouchEvent, onTrackballEvent, onUserInteraction, onUserLeaveHint, onVisibleBehindCanceled, onWindowAttributesChanged, onWindowFocusChanged, onWindowStartingActionMode, onWindowStartingActionMode, openContextMenu, overridePendingTransition, overridePendingTransition, postponeEnterTransition, recreate, registerActivityLifecycleCallbacks, registerComponentCallbacks, registerForContextMenu, releaseInstance, removeDialog, requestDragAndDropPermissions, requestPermissions, requestShowKeyboardShortcuts, requestVisibleBehind, requestWindowFeature, requireViewById, runOnUiThread, setActionBar, setContentTransitionManager, setDefaultKeyMode, setEnterSharedElementCallback, setExitSharedElementCallback, setFeatureDrawable, setFeatureDrawableAlpha, setFeatureDrawableResource, setFeatureDrawableUri, setFinishOnTouchOutside, setImmersive, setInheritShowWhenLocked, setIntent, setLocusContext, setMediaController, setPictureInPictureParams, setProgress, setProgressBarIndeterminate, setProgressBarIndeterminateVisibility, setProgressBarVisibility, setRecentsScreenshotEnabled, setRequestedOrientation, setResult, setResult, setSecondaryProgress, setShouldDockBigOverlays, setShowWhenLocked, setTaskDescription, setTitle, setTitle, setTitleColor, setTranslucent, setTurnScreenOn, setVisible, setVolumeControlStream, setVrModeEnabled, shouldDockBigOverlays, shouldShowRequestPermissionRationale, shouldUpRecreateTask, showAssist, showDialog, showDialog, showLockTaskEscapeMessage, startActionMode, startActionMode, startActivities, startActivities, startActivity, startActivity, startActivityFromChild, startActivityFromChild, startActivityFromFragment, startActivityFromFragment, startActivityIfNeeded, startActivityIfNeeded, startIntentSender, startIntentSender, startIntentSenderFromChild, startIntentSenderFromChild, startLocalVoiceInteraction, startLockTask, startManagingCursor, startNextMatchingActivity, startNextMatchingActivity, startPostponedEnterTransition, startSearch, stopLocalVoiceInteraction, stopLockTask, stopManagingCursor, takeKeyEvents, triggerSearch, unregisterActivityLifecycleCallbacks, unregisterComponentCallbacks, unregisterForContextMenu</code></li>
+<code>closeContextMenu, createPendingResult, dismissDialog, dismissKeyboardShortcutsHelper, dispatchGenericMotionEvent, dispatchPopulateAccessibilityEvent, dispatchTouchEvent, dispatchTrackballEvent, enterPictureInPictureMode, enterPictureInPictureMode, finish, finishActivity, finishActivityFromChild, finishAffinity, finishAfterTransition, finishAndRemoveTask, finishFromChild, getActionBar, getApplication, getCallingActivity, getCallingPackage, getChangingConfigurations, getComponentName, getContentScene, getContentTransitionManager, getCurrentFocus, getFragmentManager, getIntent, getLastNonConfigurationInstance, getLayoutInflater, getLoaderManager, getLocalClassName, getMaxNumPictureInPictureActions, getMediaController, getOnBackInvokedDispatcher, getParent, getParentActivityIntent, getPreferences, getReferrer, getRequestedOrientation, getSearchEvent, getSplashScreen, getSystemService, getTaskId, getTitle, getTitleColor, getVoiceInteractor, getVolumeControlStream, getWindow, getWindowManager, hasWindowFocus, isActivityTransitionRunning, isChangingConfigurations, isChild, isDestroyed, isFinishing, isImmersive, isInMultiWindowMode, isInPictureInPictureMode, isLaunchedFromBubble, isLocalVoiceInteractionSupported, isTaskRoot, isVoiceInteraction, isVoiceInteractionRoot, managedQuery, moveTaskToBack, navigateUpTo, navigateUpToFromChild, onActionModeFinished, onActionModeStarted, onActivityReenter, onApplyThemeResource, onAttachedToWindow, onAttachFragment, onChildTitleChanged, onContextItemSelected, onContextMenuClosed, onCreate, onCreateContextMenu, onCreateDescription, onCreateDialog, onCreateDialog, onCreateNavigateUpTaskStack, onCreatePanelView, onCreateThumbnail, onDetachedFromWindow, onEnterAnimationComplete, onGenericMotionEvent, onGetDirectActions, onKeyLongPress, onKeyMultiple, onKeyShortcut, onKeyUp, onLocalVoiceInteractionStarted, onLocalVoiceInteractionStopped, onNavigateUp, onNavigateUpFromChild, onOptionsMenuClosed, onPerformDirectAction, onPictureInPictureRequested, onPictureInPictureUiStateChanged, onPostCreate, onPrepareDialog, onPrepareDialog, onPrepareNavigateUpTaskStack, onPrepareOptionsMenu, onProvideAssistContent, onProvideAssistData, onProvideKeyboardShortcuts, onProvideReferrer, onRestart, onRestoreInstanceState, onRestoreInstanceState, onSaveInstanceState, onSearchRequested, onSearchRequested, onTopResumedActivityChanged, onTouchEvent, onTrackballEvent, onUserInteraction, onUserLeaveHint, onVisibleBehindCanceled, onWindowAttributesChanged, onWindowFocusChanged, onWindowStartingActionMode, onWindowStartingActionMode, openContextMenu, overridePendingTransition, overridePendingTransition, postponeEnterTransition, recreate, registerActivityLifecycleCallbacks, registerComponentCallbacks, registerForContextMenu, releaseInstance, removeDialog, requestDragAndDropPermissions, requestPermissions, requestShowKeyboardShortcuts, requestVisibleBehind, requestWindowFeature, requireViewById, runOnUiThread, setActionBar, setContentTransitionManager, setDefaultKeyMode, setEnterSharedElementCallback, setExitSharedElementCallback, setFeatureDrawable, setFeatureDrawableAlpha, setFeatureDrawableResource, setFeatureDrawableUri, setFinishOnTouchOutside, setImmersive, setInheritShowWhenLocked, setIntent, setLocusContext, setMediaController, setPictureInPictureParams, setProgress, setProgressBarIndeterminate, setProgressBarIndeterminateVisibility, setProgressBarVisibility, setRecentsScreenshotEnabled, setRequestedOrientation, setResult, setResult, setSecondaryProgress, setShouldDockBigOverlays, setShowWhenLocked, setTaskDescription, setTitle, setTitle, setTitleColor, setTranslucent, setTurnScreenOn, setVisible, setVolumeControlStream, setVrModeEnabled, shouldDockBigOverlays, shouldShowRequestPermissionRationale, shouldUpRecreateTask, showAssist, showDialog, showDialog, showLockTaskEscapeMessage, startActionMode, startActionMode, startActivities, startActivities, startActivity, startActivity, startActivityFromChild, startActivityFromChild, startActivityFromFragment, startActivityFromFragment, startActivityIfNeeded, startActivityIfNeeded, startIntentSender, startIntentSender, startIntentSenderFromChild, startIntentSenderFromChild, startLocalVoiceInteraction, startLockTask, startManagingCursor, startNextMatchingActivity, startNextMatchingActivity, startPostponedEnterTransition, startSearch, stopLocalVoiceInteraction, stopLockTask, stopManagingCursor, takeKeyEvents, triggerSearch, unregisterActivityLifecycleCallbacks, unregisterComponentCallbacks, unregisterForContextMenu</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.android.view.ContextThemeWrapper">
@@ -351,6 +381,34 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="position">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>position</h4>
+<pre>int position</pre>
+</li>
+</ul>
+<a id="tv_city">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>tv_city</h4>
+<pre>public&nbsp;android.widget.TextView tv_city</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -377,6 +435,42 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="onCreateOptionsMenu(android.view.Menu)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onCreateOptionsMenu</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;onCreateOptionsMenu&#8203;(android.view.Menu&nbsp;menu)</pre>
+<div class="block">Constructor</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>onCreateOptionsMenu</code>&nbsp;in class&nbsp;<code>android.app.Activity</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>menu</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true</dd>
+</dl>
+</li>
+</ul>
+<a id="onOptionsItemSelected(android.view.MenuItem)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onOptionsItemSelected</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;onOptionsItemSelected&#8203;(@NonNull
+                                     android.view.MenuItem&nbsp;item)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>onOptionsItemSelected</code>&nbsp;in class&nbsp;<code>android.app.Activity</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>item</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if the item has been selected</dd>
+</dl>
+</li>
+</ul>
 <a id="onCreate(android.os.Bundle)">
 <!--   -->
 </a>
@@ -387,6 +481,8 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>onCreate</code>&nbsp;in class&nbsp;<code>androidx.fragment.app.FragmentActivity</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>savedInstanceState</code> - </dd>
 </dl>
 </li>
 </ul>
@@ -448,7 +544,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

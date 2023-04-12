@@ -50,6 +50,8 @@ public class NasaSavedPhotos extends AppCompatActivity {
     /** This hold the access to the nasa photos database */
     NasaPhotoInfoDAO nasaDAO;
 
+    private Executor thread;
+
     /** This method creates and controls the nasa saved photos activity
      *
      * @param savedInstanceState If the activity is being re-initialized after
@@ -60,10 +62,14 @@ public class NasaSavedPhotos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NasaPhotoDatabase db = Room.databaseBuilder(getApplicationContext(), NasaPhotoDatabase.class, "nasa-photos")
-                .fallbackToDestructiveMigration()
-                .build();
-        nasaDAO = db.nPDAO();
+        thread = Executors.newSingleThreadExecutor();
+        thread.execute(() ->
+        {
+            NasaPhotoDatabase db = Room.databaseBuilder(getApplicationContext(), NasaPhotoDatabase.class, "nasa-photos")
+                    .fallbackToDestructiveMigration()
+                    .build();
+            nasaDAO = db.nPDAO();
+        });
 
         binding = ActivityNasaSavedPhotosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

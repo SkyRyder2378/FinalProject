@@ -52,6 +52,13 @@ public class NasaPhotoInfo {
         imageURL = iURL;
     }
 
+    public NasaPhotoInfo (String rName, String cName, String iURL){
+
+        roverName = rName;
+        cameraName = cName;
+        imageURL = iURL;
+    }
+
     /** This constructed allows simple initiation of the class
      *
      */
@@ -96,8 +103,13 @@ public class NasaPhotoInfo {
      * @return This returns a bitmap version of the byte array rover image
      */
     public Bitmap byteArrayToBitmap(byte[] img){
-        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-        return bitmap;
+        if(img!=null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+            return bitmap;
+        }
+        else{
+            return null;
+        }
     }
 
     /** This method transforms a Bitmap into a byte array
@@ -106,9 +118,15 @@ public class NasaPhotoInfo {
      * @return This returns a byte array version of the bitmap rover image
      */
     public byte[] bitmapToByteArray(Bitmap img){
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        img.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-        return outputStream.toByteArray();
+        if(img != null){
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            img.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+            return outputStream.toByteArray();
+        }
+        else{
+            return null;
+        }
+
     }
 
 }

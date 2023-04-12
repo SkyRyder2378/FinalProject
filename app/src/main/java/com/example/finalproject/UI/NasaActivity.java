@@ -19,14 +19,18 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.finalproject.Data.NasaPhotoDatabase;
 import com.example.finalproject.Data.NasaPhotoInfo;
+import com.example.finalproject.Data.NasaPhotoInfoDAO;
 import com.example.finalproject.Data.NasaViewModel;
+import com.example.finalproject.Data.WeatherDatabase;
 import com.example.finalproject.R;
 import com.example.finalproject.databinding.ActivityNasaBinding;
 import com.example.finalproject.databinding.NasaPhotoBinding;
@@ -41,6 +45,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /** This class controls the nasa rovers photos activity
  * @author Laura Mayer 040 882 118
@@ -65,6 +71,11 @@ public class NasaActivity extends AppCompatActivity {
 
     /** This holds the nasa view model */
     NasaViewModel nasaModel;
+
+    /** This hold the access to the nasa photos database */
+    NasaPhotoInfoDAO nasaDAO;
+
+    private Executor thread;
 
 
     /** This method creates and controls the activity nasa
