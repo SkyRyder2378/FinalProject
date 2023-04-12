@@ -6,17 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.app.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.finalproject.Data.NasaPhotoDatabase;
 import com.example.finalproject.Data.NasaPhotoInfo;
 import com.example.finalproject.Data.NasaPhotoInfoDAO;
+import com.example.finalproject.Data.NasaViewModel;
 import com.example.finalproject.R;
+import com.example.finalproject.databinding.ActivityNasaSavedPhotosBinding;
 import com.example.finalproject.databinding.NasaPhotoInformationBinding;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /** This class creates the details page of the saved fragment information
  * @author Laura Mayer 040 882 118
@@ -26,6 +35,16 @@ public class SavedNasaPhotoDetailFragment extends Fragment {
 
     /** This holds the selected nasa photo object */
     NasaPhotoInfo selected;
+
+    ArrayList<NasaPhotoInfo> nasaPhotos;
+
+    RecyclerView.Adapter nasaAdapter;
+
+    NasaViewModel nasaModel;
+
+    Executor thread;
+
+    int position;
 
     /** This is a constructor for simple access
      *
@@ -37,6 +56,8 @@ public class SavedNasaPhotoDetailFragment extends Fragment {
      * @param photo This is the selected nasa photo object
      */
     public SavedNasaPhotoDetailFragment(NasaPhotoInfo photo){selected = photo;}
+
+    public void setItemPosition(int pos){position = pos;}
 
     /** This method returns the selected nasa photo object
      *
@@ -63,7 +84,19 @@ public class SavedNasaPhotoDetailFragment extends Fragment {
         NasaPhotoInfoDAO nasaDAO = db.nPDAO();
 
         NasaPhotoInformationBinding binding = NasaPhotoInformationBinding.inflate(getLayoutInflater());
+        ActivityNasaSavedPhotosBinding sourceBinding = ActivityNasaSavedPhotosBinding.inflate(getLayoutInflater());
 
+        nasaModel = new ViewModelProvider(this).get(NasaViewModel.class);
+        nasaPhotos = nasaModel.nasaPhotos.getValue();
+        if(nasaPhotos == null){
+            nasaModel.nasaPhotos.setValue(nasaPhotos = new ArrayList<>());
+
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(() -> {
+                nasaPhotos.addAll(nasaDAO.getAllImages());
+                sourceBinding.nasaRecycler.setAdapter(nasaAdapter);
+            });
+        }
         Button deleteButton = binding.actionButton;
 
         binding.roverImageFull.setImageBitmap(selected.getRoverImage());
@@ -79,9 +112,15 @@ public class SavedNasaPhotoDetailFragment extends Fragment {
             builder.setTitle("Question:");
             builder.setNegativeButton("no", (dialog, cl) -> {  });
             builder.setPositiveButton("yes", (dialog, cl) -> {
-                nasaDAO.deleteImage(selected);
+                thread = Executors.newSingleThreadExecutor();
+                thread.execute(() -> {
+                    nasaDAO.deleteImage(selected);
+                });
 
-                Snackbar.make(binding.roverImageFull, "You deleted the current photo", Snackbar.LENGTH_LONG).show();
+                nasaPhotos.remove(selected);
+                nasaAdapter.notifyItemRemoved(position);
+                Snackbar.make(binding.roverImageFull, "You deleted the current photo from the database", Snackbar.LENGTH_LONG).show();
+
             });
             builder.create().show();
         });

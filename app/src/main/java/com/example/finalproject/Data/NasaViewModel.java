@@ -16,4 +16,6 @@ public class NasaViewModel extends ViewModel {
 
     /** This is a mutable live data version of a nasa photo object */
     public MutableLiveData<NasaPhotoInfo> selectedPhoto = new MutableLiveData<>();
+
+    public int position;
 }

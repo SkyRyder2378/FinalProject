@@ -50,6 +50,8 @@ public class NasaSavedPhotos extends AppCompatActivity {
     /** This hold the access to the nasa photos database */
     NasaPhotoInfoDAO nasaDAO;
 
+    public int position;
+
     private Executor thread;
 
     /** This method creates and controls the nasa saved photos activity
@@ -88,15 +90,6 @@ public class NasaSavedPhotos extends AppCompatActivity {
             });
         }
 
-        nasaModel.selectedPhoto.observe(this, (newPhoto) -> {
-            SavedNasaPhotoDetailFragment photoFragment = new SavedNasaPhotoDetailFragment(newPhoto);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.nasaFrameLayout, photoFragment);
-            transaction.commit();
-            transaction.addToBackStack("");
-        });
-
         binding.nasaRecycler.setAdapter(nasaAdapter = new RecyclerView.Adapter<SavesRowHolder>() {
             @NonNull
             @Override
@@ -124,6 +117,16 @@ public class NasaSavedPhotos extends AppCompatActivity {
             }
         });
 
+        nasaModel.selectedPhoto.observe(this, (newPhoto) -> {
+            SavedNasaPhotoDetailFragment photoFragment = new SavedNasaPhotoDetailFragment(newPhoto);
+            photoFragment.setItemPosition(position);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.nasaFrameLayout, photoFragment);
+            transaction.commit();
+            transaction.addToBackStack("");
+        });
+
     }
 
     /** This is an inner class that creates a row holder for the saved nasa photo objects
@@ -136,6 +139,9 @@ public class NasaSavedPhotos extends AppCompatActivity {
         /** This holds a text view that contains the rover name */
         TextView roverName;
 
+        int position;
+
+
         /** This method creates an item view of the rover photo object
          *
          * @param itemView
@@ -144,7 +150,8 @@ public class NasaSavedPhotos extends AppCompatActivity {
             super(itemView);
 
             itemView.setOnClickListener(clk -> {
-                int position = getAbsoluteAdapterPosition();
+                position = getAbsoluteAdapterPosition();
+                nasaModel.position = position;
                 NasaPhotoInfo selected = nasaPhotos.get(position);
 
                 nasaModel.selectedPhoto.postValue(selected);
@@ -153,6 +160,7 @@ public class NasaSavedPhotos extends AppCompatActivity {
             marsImage = itemView.findViewById(R.id.marsImage);
             roverName = itemView.findViewById(R.id.roverName);
         }
+
     }
 
 }
