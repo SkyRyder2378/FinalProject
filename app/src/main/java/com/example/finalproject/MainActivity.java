@@ -8,6 +8,7 @@ import com.example.finalproject.UI.NasaPage;
 import com.example.finalproject.UI.NewYorkPage;
 import com.example.finalproject.UI.NewYorkTimes;
 import com.example.finalproject.UI.PlaceKittenPage;
+import com.example.finalproject.UI.SearchKittenImage;
 import com.example.finalproject.UI.WeatherStackPage;
 import com.example.finalproject.databinding.ActivityMainBinding;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(NewYorkPage);
         });
         binding.kitten.setOnClickListener(clk->{
-            Intent PlaceKittenPage=new Intent(this,PlaceKittenPage.class);
+            Intent PlaceKittenPage=new Intent(this, SearchKittenImage.class);
             startActivity(PlaceKittenPage);
         });
         binding.weather.setOnClickListener(clk->{

@@ -60,6 +60,35 @@
             android:name=".UI.WeatherStackPage"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
+
+
+
+
+
+        <activity
+            android:name=".UI.SearchKittenImage"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".UI.FavouriteKittenImages"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
