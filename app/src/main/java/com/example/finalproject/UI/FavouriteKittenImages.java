@@ -33,6 +33,18 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * @author IQRAM
+ * @version 1.0
+
+ This class represents the activity that displays the list of favourite kitten images.
+ It extends the AppCompatActivity class and implements various methods to manage the activity lifecycle,
+ user interactions and display the UI elements. It also uses a RecyclerView to display the list of kitten images.
+ This class is responsible for handling the user actions such as selecting a menu item, deleting a kitten image
+ and displaying an alert dialog. It also interacts with the ViewModel and DAO classes to retrieve and manipulate
+ the kitten data.
+ */
+
 public class FavouriteKittenImages extends AppCompatActivity {
 ActivityFavouriteKittenImagesBinding binding;
 

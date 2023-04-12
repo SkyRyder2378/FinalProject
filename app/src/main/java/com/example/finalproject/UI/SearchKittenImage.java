@@ -1,3 +1,8 @@
+/**
+
+ The SearchKittenImage activity allows users to search for kitten images by specifying the width and height of the image they want.
+ Users can save the image to the database if they want.
+ */
 package com.example.finalproject.UI;
 
 
@@ -39,79 +44,75 @@ import java.util.concurrent.Executors;
 
 
 public class SearchKittenImage extends AppCompatActivity {
+    // View binding
     ActivitySearchKittenImageBinding binding;
 
+    // SharedPreferences
     SharedPreferences prefs;
+
+    // Thread executor
     private Executor thread;
 
+    // Database
     private KittenDAO mDAO;
+
+    // Image path and bitmap
     String imagePath;
     Bitmap image;
 
+    // Request queue for Volley
     protected RequestQueue queue = null;
 
-
+    /**
+     * Creates the options menu for the activity.
+     * @param menu The menu to be inflated.
+     * @return Returns true after inflating the menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.get_kitten_image, menu);
-
-
         return true;
-
     }
 
-
+    /**
+     * Handles the selected option from the options menu.
+     * @param item The selected item from the options menu.
+     * @return Returns true after handling the selected item.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-
         switch (item.getItemId()) {
-
-
-
-
-
-
-
             case R.id.Item_1:
-
-
+                // Show about message
                 AlertDialog.Builder builder = new AlertDialog.Builder(SearchKittenImage.this);
-                builder.setMessage(R.string.kitten_about_message).
-                        setTitle(R.string.kitten_about_title).
-                        setNegativeButton(R.string.ok, (dialog, cl) -> {
+                builder.setMessage(R.string.kitten_about_message)
+                        .setTitle(R.string.kitten_about_title)
+                        .setNegativeButton(R.string.ok, (dialog, cl) -> {
                         }).create().show();
-
-
                 break;
-
-
             case R.id.Item_2:
+                // Save image to database
+                thread.execute(() -> {
+                    if (image!=null){
+                        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
+                        String currentDatEndTime = sdf.format(new Date());
 
-
-                thread.execute(()->{
-
-                if (image!=null){
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
-                    String currentDatEndTime = sdf.format(new Date());
-
-                    mDAO.insertKittenItem(new Kitten(binding.width.getText().toString(),binding.height.getText().toString(),currentDatEndTime,imagePath));
-                    Snackbar.make(binding.getRoot(),getString( R.string.image_saved) , Snackbar.LENGTH_SHORT).show();
-                }
+                        mDAO.insertKittenItem(new Kitten(binding.width.getText().toString(),binding.height.getText().toString(),currentDatEndTime,imagePath));
+                        Snackbar.make(binding.getRoot(),getString(R.string.image_saved) , Snackbar.LENGTH_SHORT).show();
+                    }
                 });
-
-
-
-            break;
+                break;
         }
         return true;
-
-
     }
 
-
+    /**
+     * Initializes the activity.
+     * @param savedInstanceState The saved instance state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,13 +124,8 @@ public class SearchKittenImage extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
 
-
-
-
-
-
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
-     binding.width.setText(prefs.getString("width", ""));
+        binding.width.setText(prefs.getString("width", ""));
         binding.height.setText(prefs.getString("height", ""));
 
         thread = Executors.newSingleThreadExecutor();
